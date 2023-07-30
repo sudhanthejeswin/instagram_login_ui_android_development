@@ -1,0 +1,42 @@
+package com.example.myapplication
+import android.view.Window
+import android.view.WindowManager
+import android.os.Bundle
+import android.text.InputType
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputLayout
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var editTextUsername: EditText
+    private lateinit var editTextPassword: EditText
+    private lateinit var buttonLogin: Button
+    private lateinit var passwordToggle: ImageView
+    private lateinit var passwordTextInputLayout: TextInputLayout
+    private var isPasswordVisible = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        window.requestFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        supportActionBar?.hide()
+
+        setContentView(R.layout.activity_main)
+
+        editTextUsername = findViewById(R.id.editTextUsername)
+        editTextPassword = findViewById(R.id.editTextPassword)
+        buttonLogin = findViewById(R.id.buttonLogin)
+        passwordToggle = findViewById(R.id.passwordToggle)
+        passwordTextInputLayout = findViewById(R.id.passwordTextInputLayout)
+
+        buttonLogin.setOnClickListener {
+            val username = editTextUsername.text.toString()
+            val password = editTextPassword.text.toString()
+            val message = "Username: $username\nPassword: $password"
+            Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+        }
+    }}
